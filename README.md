@@ -109,23 +109,26 @@ class MyResolver extends ContextResolver
 {
     //...
 
-    public function serializeTeam(): int
+    public function serializeTeam(Team $team): int
     {
-        return $this->team->id;
+        return $team->id;
     }
 }
 ```
 
-You can validate a resolved context like this:
+You can validate the integrity of a resolved context like this:
 
 ```php
 class MyResolver extends ContextResolver
 {
     //...
 
-    public function checkTeam(): bool
-    {
-        return $this->team->id === $this->user->team_id;
+    public function checkProject(
+        DefinesContext $definition,
+        Project $project,
+        array $resolved,
+    ): bool {
+        return $project->id === $resolved['team']->project_id;
     }
 }
 ```
