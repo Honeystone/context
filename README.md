@@ -7,6 +7,12 @@ This package was developed several years ago for our own multi-tenant applicatio
 in the hope it will be useful to the wider Laravel community. We're open to contributions, feedback and constructive
 criticism.
 
+## Getting started
+
+Start by reading the
+[short blog post](https://honeystone.com/blog/weve-just-open-sourced-our-application-context-manager-for-laravel)
+that demonstrates how to use this package in multi-tenant application.
+
 ## Installation
 
 ```shell
