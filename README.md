@@ -21,6 +21,15 @@ Start by reading the
 [short blog post](https://honeystone.com/blog/weve-just-open-sourced-our-application-context-manager-for-laravel)
 that demonstrates how to use this package in multi-tenant application.
 
+## Support us
+
+[![Support Us](https://honeystone.com/images/github/support-us.webp)](https://honeystone.com)
+
+We are committed to delivering high-quality open source packages maintained by the team at Honeystone. If you would
+like to support our efforts, simply use our packages, recommend them and contribute.
+
+If you need any help with your project, or require any custom development, please [get in touch](https://honeystone.com/contact-us).
+
 ## Installation
 
 ```shell
