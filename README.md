@@ -1,9 +1,10 @@
 # Application Context Manager for Laravel
 
 ![Static Badge](https://img.shields.io/badge/tests-passing-green)
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/honeystone/context)](https://packagist.org/packages/honeystone/context)
 ![GitHub License](https://img.shields.io/github/license/honeystone/context)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/honeystone/context)](https://packagist.org/packages/honeystone/context)
 ![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/honeystone/context/php)
+![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/honeystone/context/illuminate%2Fcontracts?label=laravel)
 [![Static Badge](https://img.shields.io/badge/honeystone-fa6900)](https://honeystone.com/blog/weve-just-open-sourced-our-application-context-manager-for-laravel)
 
 
