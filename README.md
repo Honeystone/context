@@ -1,4 +1,12 @@
 # Application Context Manager for Laravel
+
+![Static Badge](https://img.shields.io/badge/tests-passing-green)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/honeystone/context)](https://packagist.org/packages/honeystone/context)
+![GitHub License](https://img.shields.io/github/license/honeystone/context)
+![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/honeystone/context/php)
+[![Static Badge](https://img.shields.io/badge/honeystone-fa6900)](https://honeystone.com/blog/weve-just-open-sourced-our-application-context-manager-for-laravel)
+
+
 We developed `honeystone/context` for managing the application context in multi-tenant applications. It provides a
 simple, fluent API for intializing, extending and switching contexts using 'context resolvers'. In addition, contexts
 are automagically available in queued jobs and can be used to scope Eloquent models.
