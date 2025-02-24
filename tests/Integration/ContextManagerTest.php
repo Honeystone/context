@@ -6,13 +6,13 @@ use Honeystone\Context\Exceptions\ContextIntegrityException;
 use Honeystone\Context\Tests\Fixture\AuthenticatedProjectResolver;
 use Honeystone\Context\Tests\Fixture\AuthenticatedTeamResolver;
 use Honeystone\Context\Tests\Fixture\GuestResolver;
+use Honeystone\Context\Tests\Fixture\InitalizationProbeResolver;
 use Honeystone\Context\Tests\Fixture\InvalidUserResolver;
 use Honeystone\Context\Tests\Fixture\Project;
 use Honeystone\Context\Tests\Fixture\Team;
 use Honeystone\Context\Tests\Fixture\TeamReceiver;
 use Honeystone\Context\Tests\Fixture\User;
 use Honeystone\Context\Tests\Fixture\UserResolver;
-
 use Honeystone\Context\Tests\Fixture\ValidUserResolver;
 
 use function Honeystone\Context\context;
@@ -75,6 +75,16 @@ it('reinitializes the context', function (): void {
         ->and(context('team'))->toBeInstanceOf(Team::class)
         ->and(context('project'))->toBeInstanceOf(Project::class);
 });
+
+test('context is not initialized during reinitialization', function (): void {
+
+    context()->define() ->accept('user', User::class);
+
+    context()->initialize(new GuestResolver());
+
+    context()->reinitialize(new InitalizationProbeResolver());
+})
+    ->throws(UnexpectedValueException::class);
 
 it('extends a context', function (): void {
 

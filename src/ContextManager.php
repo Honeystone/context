@@ -92,6 +92,9 @@ final class ContextManager implements ManagesContext
         $definition = $this->getCurrentDefinition();
 
         if ($this->initialized() && !$definition->hasDefinitions()) {
+
+            $this->initialized = false;
+
             $definition = $this->initializer->getDefinition();
         }
 
