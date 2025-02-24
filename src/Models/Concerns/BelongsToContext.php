@@ -28,7 +28,7 @@ trait BelongsToContext
 
     public function initializeScopedByContext(): void
     {
-        if ($this instanceof ReceivesContext) {
+        if (context()->initialized() && $this instanceof ReceivesContext) {
 
             foreach (Arr::wrap(static::$context ?? []) as $name) {
                 context()->receive($name, $this);
@@ -84,7 +84,7 @@ trait BelongsToContext
             $name = $this->$method($context);
         }
 
-        if (!$this->relationLoaded($name)) {
+        if (! $this->relationLoaded($name)) {
             $this->setRelation($name, $context);
         }
     }
@@ -107,7 +107,7 @@ trait BelongsToContext
 
     private function aliasContext(string $name): string
     {
-        if (!property_exists($this, 'contextAliases')) {
+        if (! property_exists($this, 'contextAliases')) {
             return $name;
         }
 
