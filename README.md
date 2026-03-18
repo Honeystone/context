@@ -8,7 +8,7 @@
 [![Static Badge](https://img.shields.io/badge/honeystone-fa6900)](https://honeystone.com/blog/weve-just-open-sourced-our-application-context-manager-for-laravel)
 
 > [!IMPORTANT]
-> Rename Incoming: `honeystone/context` --> `honeystone/tenancy`
+> Rename Incoming: `honeystone/context` ➜ `honeystone/tenancy`
 >
 > Given the introduction of Laravel's own context package and the inevitable confusion around the name, we will soon be
 > renaming this package to better reflect its purpose and avoid confusion.
