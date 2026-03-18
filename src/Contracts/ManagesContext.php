@@ -13,16 +13,12 @@ interface ManagesContext
 {
     /**
      * Check if the context has been initialized.
-     *
-     * @return bool
      */
     public function initialized(): bool;
 
     /**
      * After initialization a unique key is generated;
      * null when not initialized.
-     *
-     * @return string|null
      */
     public function getInitializationKey(): ?string;
 
@@ -31,7 +27,6 @@ interface ManagesContext
     /**
      * Define the application context.
      *
-     * @return DefinesContext
      *
      * @throws ContextAlreadyInitializedException
      */
@@ -69,9 +64,9 @@ interface ManagesContext
      * Extend the current context without reinitialisation. Extensions are
      * independent of exiting contexts and have zero knowledge of them.
      *
-     * @throws ContextNotInitializedException
      *
      * @return $this
+     * @throws ContextNotInitializedException
      */
     public function extend(ResolvesContext $resolver): self;
 

@@ -8,7 +8,7 @@ seeders:
   - Workbench\Database\Seeders\DatabaseSeeder
 
 workbench:
-  start: '/'
+  start: "/"
   install: true
   health: false
   discovers:

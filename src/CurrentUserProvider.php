@@ -10,9 +10,7 @@ use Illuminate\Contracts\Auth\Factory;
 
 final class CurrentUserProvider implements ProvidesCurrentUser
 {
-    public function __construct(private readonly Factory $factory)
-    {
-    }
+    public function __construct(private readonly Factory $factory) {}
 
     public function isGuest(): bool
     {
@@ -38,6 +36,7 @@ final class CurrentUserProvider implements ProvidesCurrentUser
     {
         if ($id === null) {
             $this->factory->guard()->logout();
+
             return $this;
         }
 

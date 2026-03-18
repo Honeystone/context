@@ -12,13 +12,10 @@ use function Honeystone\Context\context;
 
 final class ContextScope implements Scope
 {
-    public function __construct(private readonly string $name)
-    {
-    }
+    public function __construct(private readonly string $name) {}
 
     /**
      * @param Builder<Model> $builder
-     * @param Model $model
      */
     public function apply(Builder $builder, Model $model): void
     {

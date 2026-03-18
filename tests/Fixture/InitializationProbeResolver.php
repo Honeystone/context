@@ -9,11 +9,11 @@ use UnexpectedValueException;
 
 use function Honeystone\Context\context;
 
-class InitalizationProbeResolver extends ContextResolver
+class InitializationProbeResolver extends ContextResolver
 {
     public function resolveUser(): ?User
     {
-        if (context()->initalized()) {
+        if (context()->initialized()) {
             throw new UnexpectedValueException('Context is initalized!');
         }
 

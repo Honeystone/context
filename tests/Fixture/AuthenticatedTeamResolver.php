@@ -13,12 +13,12 @@ class AuthenticatedTeamResolver extends ContextResolver
 {
     public function resolveUser(): User
     {
-        return new User();
+        return new User;
     }
 
     public function resolveTeam(): Team
     {
-        return new Team();
+        return new Team;
     }
 
     public function resolveProject(): ?Project
@@ -43,7 +43,7 @@ class AuthenticatedTeamResolver extends ContextResolver
             $data['team'] === 2 &&
             !array_key_exists('project', $data)
         ) {
-            return new static();
+            return new static;
         }
 
         throw new RuntimeException('Failed to deserialize!');

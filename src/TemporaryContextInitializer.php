@@ -17,8 +17,7 @@ final class TemporaryContextInitializer implements InitializesTemporaryContext
         private readonly Closure $up,
         private readonly Closure $down,
         private readonly InitializesContext $initializer,
-    ) {
-    }
+    ) {}
 
     public function start(): ManagesContext
     {

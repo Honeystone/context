@@ -8,7 +8,7 @@ use Honeystone\Context\Tests\Fixture\User;
 
 it('defines required context', function (): void {
 
-    $definer = new ContextDefiner();
+    $definer = new ContextDefiner;
 
     $definer->require('user', User::class);
 
@@ -20,7 +20,7 @@ it('defines required context', function (): void {
 
 it('defines required when context', function (): void {
 
-    $definer = new ContextDefiner();
+    $definer = new ContextDefiner;
 
     $definer->accept('user', User::class);
     $definer->requireWhenProvided('user', 'team', Team::class);
@@ -33,7 +33,7 @@ it('defines required when context', function (): void {
 
 it('defines accepted context', function (): void {
 
-    $definer = new ContextDefiner();
+    $definer = new ContextDefiner;
 
     $definer->accept('user', User::class);
 
@@ -45,7 +45,7 @@ it('defines accepted context', function (): void {
 
 it('defines accepted when context', function (): void {
 
-    $definer = new ContextDefiner();
+    $definer = new ContextDefiner;
 
     $definer->accept('user', User::class);
     $definer->acceptWhenProvided('user', 'team', Team::class);

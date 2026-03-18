@@ -15,7 +15,7 @@ abstract class ContextResolver implements ResolvesContext
 {
     public function define(DefinesContext $definition): void
     {
-        //no action
+        // no action
     }
 
     public function verifyContextIntegrity(DefinesContext $definition, array $resolved = []): void

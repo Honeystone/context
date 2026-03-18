@@ -38,9 +38,7 @@ final class ContextManager implements ManagesContext
      */
     private array $receivers = [];
 
-    public function __construct(private readonly ProvidesCurrentUser $userProvider)
-    {
-    }
+    public function __construct(private readonly ProvidesCurrentUser $userProvider) {}
 
     public function initialized(): bool
     {
@@ -59,13 +57,13 @@ final class ContextManager implements ManagesContext
 
     public function define(): DefinesContext
     {
-        return $this->definition = new ContextDefiner();
+        return $this->definition = new ContextDefiner;
     }
 
     public function initialize(ResolvesContext $resolver): self
     {
         if ($this->initialized()) {
-            throw new ContextAlreadyInitializedException();
+            throw new ContextAlreadyInitializedException;
         }
 
         $resolver->define($this->getCurrentDefinition());
@@ -160,7 +158,7 @@ final class ContextManager implements ManagesContext
     public function extend(ResolvesContext $resolver): self
     {
         if (!$this->initialized()) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         $resolver->define($this->getCurrentDefinition());
@@ -178,7 +176,7 @@ final class ContextManager implements ManagesContext
     public function has(string $name, bool $strict = true): bool
     {
         if (!$this->initialized()) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         if ($this->initializer->hasResolved($name, $strict)) {
@@ -197,7 +195,7 @@ final class ContextManager implements ManagesContext
     public function get(string $name, bool $strict = true): ?object
     {
         if (!$this->initialized()) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         if ($this->initializer->hasResolved($name, false)) {
@@ -232,7 +230,7 @@ final class ContextManager implements ManagesContext
     public function serialize(): array
     {
         if (!$this->initialized()) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         $data = [

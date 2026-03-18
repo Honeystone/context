@@ -6,7 +6,7 @@ use Honeystone\Context\Exceptions\ContextIntegrityException;
 use Honeystone\Context\Tests\Fixture\AuthenticatedProjectResolver;
 use Honeystone\Context\Tests\Fixture\AuthenticatedTeamResolver;
 use Honeystone\Context\Tests\Fixture\GuestResolver;
-use Honeystone\Context\Tests\Fixture\InitalizationProbeResolver;
+use Honeystone\Context\Tests\Fixture\InitializationProbeResolver;
 use Honeystone\Context\Tests\Fixture\InvalidUserResolver;
 use Honeystone\Context\Tests\Fixture\Project;
 use Honeystone\Context\Tests\Fixture\Team;
@@ -24,7 +24,7 @@ it('manages a context', function (): void {
         ->require('team', Team::class)
         ->accept('project', Project::class);
 
-    context()->initialize(new AuthenticatedTeamResolver());
+    context()->initialize(new AuthenticatedTeamResolver);
 
     expect(context()->initialized())->toBeTrue()
         ->and(context()->getInitializationKey())->toBeString()
@@ -38,7 +38,7 @@ it('validates an invalid context', function (): void {
     context()->define()
         ->require('user', User::class);
 
-    context()->initialize(new InvalidUserResolver());
+    context()->initialize(new InvalidUserResolver);
 })
     ->throws(ContextIntegrityException::class);
 
@@ -47,7 +47,7 @@ it('validates an valid context', function (): void {
     context()->define()
         ->require('user', User::class);
 
-    context()->initialize(new ValidUserResolver());
+    context()->initialize(new ValidUserResolver);
 
     expect(context('user'))->toBeInstanceOf(User::class);
 });
@@ -59,7 +59,7 @@ it('reinitializes the context', function (): void {
         ->acceptWhenProvided('user', 'team', Team::class)
         ->acceptWhenProvided('team', 'project', Project::class);
 
-    context()->initialize(new GuestResolver());
+    context()->initialize(new GuestResolver);
 
     $key = context()->getInitializationKey();
 
@@ -67,7 +67,7 @@ it('reinitializes the context', function (): void {
         ->and($key)->toBe(context()->getInitializationKey())
         ->and(context()->has('user'))->toBeFalse();
 
-    context()->reinitialize(new AuthenticatedProjectResolver());
+    context()->reinitialize(new AuthenticatedProjectResolver);
 
     expect(context()->initialized())->toBeTrue()
         ->and($key)->not()->toBe(context()->getInitializationKey())
@@ -78,19 +78,22 @@ it('reinitializes the context', function (): void {
 
 test('context is not initialized during reinitialization', function (): void {
 
-    context()->define() ->accept('user', User::class);
+    context()->define()->accept('user', User::class);
 
-    context()->initialize(new GuestResolver());
+    context()->initialize(new GuestResolver);
 
-    context()->reinitialize(new InitalizationProbeResolver());
-})
-    ->throws(UnexpectedValueException::class);
+    // throws an exception if the context is initialized during reinitialization
+    context()->reinitialize(new InitializationProbeResolver);
+
+    expect(context()->initialized())->toBeTrue()
+        ->and(context()->has('user'))->toBeFalse();
+});
 
 it('extends a context', function (): void {
 
     context()->define()->accept('user', User::class);
 
-    context()->initialize(new UserResolver());
+    context()->initialize(new UserResolver);
 
     $key = context()->getInitializationKey();
 
@@ -98,7 +101,7 @@ it('extends a context', function (): void {
         ->require('team', Team::class)
         ->acceptWhenProvided('team', 'project', Project::class);
 
-    context()->extend(new AuthenticatedProjectResolver());
+    context()->extend(new AuthenticatedProjectResolver);
 
     expect(context()->initialized())->toBeTrue()
         ->and($key)->toBe(context()->getInitializationKey())
@@ -114,11 +117,11 @@ it('temporarily switches a context', function (): void {
         ->acceptWhenProvided('user', 'team', Team::class)
         ->acceptWhenProvided('team', 'project', Project::class);
 
-    context()->initialize(new GuestResolver());
+    context()->initialize(new GuestResolver);
 
     $key = context()->getInitializationKey();
 
-    $tmpContext = context()->temporarilyInitialize(new AuthenticatedProjectResolver());
+    $tmpContext = context()->temporarilyInitialize(new AuthenticatedProjectResolver);
 
     $tmpContext->start();
 
@@ -144,11 +147,11 @@ it('temporarily switches a context with a closure', function (): void {
         ->acceptWhenProvided('user', 'team', Team::class)
         ->acceptWhenProvided('team', 'project', Project::class);
 
-    context()->initialize(new GuestResolver());
+    context()->initialize(new GuestResolver);
 
     $key = context()->getInitializationKey();
 
-    context()->temporarilyInitialize(new AuthenticatedProjectResolver())
+    context()->temporarilyInitialize(new AuthenticatedProjectResolver)
         ->run(function () use ($key): void {
             expect(context()->initialized())->toBeTrue()
                 ->and($key)->not()->toBe(context()->getInitializationKey())
@@ -170,9 +173,9 @@ it('notifies a receiver immediately', function (): void {
         ->require('user', User::class)
         ->require('team', Team::class);
 
-    context()->initialize(new AuthenticatedTeamResolver());
+    context()->initialize(new AuthenticatedTeamResolver);
 
-    $receiver = new TeamReceiver();
+    $receiver = new TeamReceiver;
 
     context()->receive('team', $receiver);
 
@@ -185,11 +188,11 @@ it('notifies a receiver after initialization', function (): void {
         ->require('user', User::class)
         ->require('team', Team::class);
 
-    $receiver = new TeamReceiver();
+    $receiver = new TeamReceiver;
 
     context()->receive('team', $receiver);
 
-    context()->initialize(new AuthenticatedTeamResolver());
+    context()->initialize(new AuthenticatedTeamResolver);
 
     expect($receiver->getTeam())->toBeInstanceOf(Team::class);
 });
@@ -200,7 +203,7 @@ it('serializes and deserializes the context', function (): void {
         ->require('user', User::class)
         ->require('team', Team::class);
 
-    context()->initialize(new AuthenticatedTeamResolver());
+    context()->initialize(new AuthenticatedTeamResolver);
 
     $key = context()->getInitializationKey();
 

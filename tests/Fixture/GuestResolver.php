@@ -15,6 +15,6 @@ class GuestResolver extends ContextResolver
 
     public static function deserialize(array $data): static
     {
-        return new static();
+        return new static;
     }
 }

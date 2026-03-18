@@ -126,7 +126,8 @@ final class ContextDefiner implements DefinesContext
         ];
     }
 
-    public function deserialize(array $data): self {
+    public function deserialize(array $data): self
+    {
         $this->contexts = $data['contexts'];
         $this->requiredWhen = $data['required_when'];
         $this->acceptedWhen = $data['accepted_when'];

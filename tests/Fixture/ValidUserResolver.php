@@ -10,7 +10,7 @@ class ValidUserResolver extends ContextResolver
 {
     public function resolveUser(): User
     {
-        return new User();
+        return new User;
     }
 
     public function checkUser(): bool
@@ -20,6 +20,6 @@ class ValidUserResolver extends ContextResolver
 
     public static function deserialize(array $data): static
     {
-        return new static();
+        return new static;
     }
 }

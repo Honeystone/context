@@ -16,6 +16,7 @@ final class InitializeContext
 
         if ($data === null) {
             context()->deinitialize();
+
             return;
         }
 

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Honeystone\Context\Tests;
 
+use Honeystone\Context\Providers\ContextServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Honeystone\Context\Providers\ContextServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -15,6 +15,6 @@ class TestCase extends Orchestra
      */
     protected function getPackageProviders($app)
     {
-        return [ContextServiceProvider::class,];
+        return [ContextServiceProvider::class];
     }
 }

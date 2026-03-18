@@ -11,9 +11,7 @@ final class ContextChanged
     public function __construct(
         private readonly ManagesContext $context,
         private readonly bool $firstInitialization = false,
-    )
-    {
-    }
+    ) {}
 
     public function getContext(): ManagesContext
     {

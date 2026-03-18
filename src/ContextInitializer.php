@@ -42,14 +42,12 @@ final class ContextInitializer implements InitializesContext
     public function __construct(
         private readonly DefinesContext $definition,
         private readonly ManagesContext $manager,
-    )
-    {
-    }
+    ) {}
 
     public function resolve(ResolvesContext $resolver): self
     {
         if ($this->initialized) {
-            throw new ContextAlreadyInitializedException();
+            throw new ContextAlreadyInitializedException;
         }
 
         $this->resolver = $resolver;
@@ -70,7 +68,7 @@ final class ContextInitializer implements InitializesContext
     public function hasResolved(string $name, bool $strict = true): bool
     {
         if (!$this->initialized) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         if (!array_key_exists($name, $this->resolved)) {
@@ -87,7 +85,7 @@ final class ContextInitializer implements InitializesContext
     public function getResolved(string $name, bool $strict = true): ?object
     {
         if (!$this->initialized) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         if (!$this->definition->isDefined($name)) {
@@ -104,7 +102,7 @@ final class ContextInitializer implements InitializesContext
     public function getAllResolved(): array
     {
         if (!$this->initialized) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         return $this->resolved;
@@ -118,7 +116,7 @@ final class ContextInitializer implements InitializesContext
     public function serialize(): array
     {
         if (!$this->initialized) {
-            throw new ContextNotInitializedException();
+            throw new ContextNotInitializedException;
         }
 
         return [
