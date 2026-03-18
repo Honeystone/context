@@ -305,4 +305,4 @@ A list of changes can be found in the [CHANGELOG.md](CHANGELOG.md) file.
 
 ## License
 
-[MIT](LICENSE.md) © [Honeystone Consulting Ltd](https://honeystone.com)
+[MIT](LICENSE.md) © George Palmer, [Honeystone Consulting Ltd](https://honeystone.com)
