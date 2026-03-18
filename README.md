@@ -7,6 +7,11 @@
 ![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/honeystone/context/illuminate%2Fcontracts?label=laravel)
 [![Static Badge](https://img.shields.io/badge/honeystone-fa6900)](https://honeystone.com/blog/weve-just-open-sourced-our-application-context-manager-for-laravel)
 
+> [!IMPORTANT]
+> Rename Incoming: `honeystone/context` --> `honeystone/tenancy`
+>
+> Given the introduction of Laravel's own context package and the inevitable confusion around the name, we will soon be
+> renaming this package to better reflect its purpose and avoid confusion.
 
 We developed `honeystone/context` for managing the application context in multi-tenant applications. It provides a
 simple, fluent API for intializing, extending and switching contexts using 'context resolvers'. In addition, contexts
